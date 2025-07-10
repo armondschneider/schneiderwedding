@@ -1,0 +1,27 @@
+/* Add custom fonts before Tailwind imports */
+@font-face {
+  font-family: 'NewSpirit';
+  src: url('/fonts/New%20Spirit%20Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CandyDarling';
+  src: url('/fonts/CandyDarling-Regular-Trial.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes carousel-large {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-60%); }
+}
+.animate-carousel-large {
+  animation: carousel-large 30s linear infinite;
+  width: fit-content;
+  will-change: transform;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codi & Armond's Wedding Day!</title>
+    <link href="./global.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "NewSpirit", serif;
+      }
+      .wedding-script {
+        font-family: "CandyDarling", cursive;
+      }
+    </style>
+  </head>
+  <body class="bg-amber-50 min-h-screen">
+    <nav class="flex justify-center items-center gap-12 py-3 text-2xl">
+      <a href="#story" class="hover:text-blue-700">Our Story</a>
+      <a href="#schedule" class="hover:text-blue-700">Schedule</a>
+      <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover" />
+      <a href="#faq" class="hover:text-blue-700">FAQ</a>
+      <a href="#registry" class="hover:text-blue-700">Our Registry</a>
+      <a href="#rsvp" class="hover:text-blue-700">RSVP</a>
+    </nav>
+    <main class="flex flex-col items-center mt-8">
+      <div
+        class="relative overflow-hidden rounded-3xl w-[95vw] max-w-6xl mb-12"
+      >
+        <img
+          src="assets/cover.JPG"
+          alt="Codi and Armond"
+          class="w-full h-[700px] object-cover"
+        />
+        <div class="absolute inset-0 bg-black bg-opacity-25"></div>
+        <h1
+          class="wedding-script text-white text-8xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow-xl"
+          style="width: 100%; pointer-events: none"
+        >
+          Codi and Armond's <br />
+          Wedding Day!
+        </h1>
+      </div>
+      <section
+        class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto"
+      >
+        <div class="flex justify-center w-full mb-12 z-10">
+          <div class="bg-amber-50 px-12 py-10 max-w-md w-full text-center text-xl mb-12" style="clip-path: polygon(8% 0, 92% 0, 100% 12%, 100% 88%, 92% 100%, 8% 100%, 0 88%, 0 12%);">
+            <div class="mb-4">Wednesday, March 11, 2026</div>
+            <div class="mb-4">The Wedding Pavilion<br>Disney's Grand Floridian Resort & Spa</div>
+            <div>Orlando, FL</div>
+          </div>
+        </div>
+        <h2 class="wedding-script text-5xl text-center mb-8 mt-0">Our Story</h2>
+        <div class="max-w-3xl px-4">
+          <p class="text-center text-xl mb-6">
+            Codi and Armond met in August 2022 while she was a Disney College Program
+            cast member. Most of their early dates were spent at Disney World,
+            making it a big part of their love story. After Codi moved back to
+            Arizona for teaching, Armond followed a year later and found a job so they
+            could be together.
+          </p>
+          <p class="text-center text-xl">
+            On a trip to Sedona, Codi once joked on a red rock
+            they hiked, saying “this is somewhere you would propose.” A year
+            later, they returned and Armond proposed on that same rock. They chose Walt
+            Disney World for their wedding because it’s where they met, fell in
+            love, and created some of their happiest memories. It feels like the
+            perfect place to say “I do.”
+          </p>
+        </div>
+        <!-- Carousel Start -->
+        <div class="mt-16 mb-16 w-full overflow-hidden">
+          <div id="carousel-track" class="flex gap-16 animate-carousel-large items-center" style="height: 420px;">
+            <img src="assets/photo1.png" alt="photo1" class="h-96 object-contain" style="transform: rotate(-6deg);" />
+            <img src="assets/photo2.png" alt="photo2" class="h-96 object-contain" style="transform: rotate(4deg);" />
+            <img src="assets/photo3.png" alt="photo3" class="h-96 object-contain" style="transform: rotate(-3deg);" />
+            <img src="assets/photo4.png" alt="photo4" class="h-96 object-contain" style="transform: rotate(5deg);" />
+            <img src="assets/photo5.png" alt="photo5" class="h-96 object-contain" style="transform: rotate(-5deg);" />
+            <img src="assets/photo6.png" alt="photo6" class="h-96 object-contain" style="transform: rotate(3deg);" />
+            <img src="assets/photo7.png" alt="photo7" class="h-96 object-contain" style="transform: rotate(-2deg);" />
+            <!-- Duplicate for seamless loop -->
+            <img src="assets/photo1.png" alt="photo1-dup" class="h-96 object-contain" style="transform: rotate(-6deg);" />
+            <img src="assets/photo2.png" alt="photo2-dup" class="h-96 object-contain" style="transform: rotate(4deg);" />
+          </div>
+        </div>
+        <!-- Carousel End -->
+
+        <h2 class="wedding-script text-5xl text-center mb-12 mt-16">Wedding Schedule</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-14 gap-x-10 w-full max-w-5xl mx-auto px-12">
+          <div class="md:col-span-1 flex flex-col items-start">
+            <div class="flex items-center mb-6">
+              <h3 class="text-3xl">Welcome to the The Wedding Pavilion</h3>
+            </div>
+            <div class="text-lg mb-2">Arrive by 11:30 am</div>
+            <div class="text-md">
+              Entry to the Wedding Pavilion begins at 11:45 am. Free parking is available on site. There will also be a shuttle buss from the Port Orleans Riverside. We recommend you come early and explore the resort before the wedding.
+            </div>
+          </div>
+          <div></div>
+          <div></div>
+          <div class="md:col-span-1 flex flex-col items-start">
+            <div class="flex items-center mb-2">
+              <h3 class="text-3xl">last</h3>
+            </div>
+            <div class="text-lg mb-2">Arrive by 5:30 pm</div>
+            <div class="text-md mb-12">
+              Entry to Morris Arboretum begins at 5 pm. Free parking is available on site. There will also be two shuttle busses from the hotel. We’ll have the whole park to ourselves for the night, so feel free to explore the grounds while it’s still light out. Some of our favorite locations are the Rose Garden, Pennock Flower Walk, and the sculptures in Azalea Meadow.
+            </div>
+          </div>
+          </div>
+        </div>
+        <img src="assets/divider.png" alt="divider" class="max-w-sm mb-12 mt-12">
+        <h2 class="wedding-script text-5xl text-center mb-8 mt-16">Your Stay in Walt Disney World</h2>
+        <div class="max-w-3xl px-4">
+          <p class="text-center text-xl mb-6">
+            Make a week out of it! Since we our having our wedding at Disney we worked with the wonderful team to bring you discounts on tickets and select resorts. We want you to not only celebrate our marriage but also make it a vacation.
+          </p>
+        </div>
+        <div class="px-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto items-center mb-16 mt-8">
+          <div class="w-full flex justify-center">
+            <img src="assets/disney.jpg" alt="Walt Disney World" class="rounded-xl w-full max-w-lg object-cover" />
+          </div>
+          <div class="w-full flex flex-col items-start md:items-start">
+            <p class="text-3xl mb-6">
+                Resorts
+            </p>
+            <p class="text-lg mb-6">
+                We have exclusive rates at Disney resorts and special group ticket pricing. Explore the parks, relax at the resort, and make magical memories with family and friends.
+            </p>
+            <p class="text-lg">
+                Grand Floridian Resort and Spa - $$$ <br> Port Orleans Riverside - $$ <br> Disney's All-Star Movies Resort - $
+            </p>
+            <button class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black">
+                Book a Room
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

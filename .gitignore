@@ -1,0 +1,29 @@
+# Node
+node_modules/
+
+# Build output
+*.log
+dist/
+build/
+.env
+.DS_Store
+
+# VSCode
+.vscode/
+
+# System
+Thumbs.db
+
+# Mac
+.DS_Store
+
+# Tailwind output
+/global.css
+
+# Misc
+*.local
+*.cache
+*.tmp
+
+# OS
+Icon?
