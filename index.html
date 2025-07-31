@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Codi & Armond's Wedding Day!</title>
+    <meta name="description" content="Join us for Codi & Armond's wedding celebration at Disney's Grand Floridian Resort on March 11, 2026" />
+    <link rel="canonical" href="https://schneiders2026.com" />
+    <meta property="og:url" content="https://schneiders2026.com" />
+    <meta property="og:title" content="Codi & Armond's Wedding Day!" />
+    <meta property="og:description" content="Join us for our magical Disney wedding celebration" />
     <link href="./global.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "NewSpirit", serif;
       }
@@ -18,15 +26,120 @@
       }
     </style>
   </head>
-  <body class="bg-amber-50 min-h-screen">
-    <nav class="flex justify-center items-center gap-12 py-3 text-2xl">
-      <a href="#story" class="hover:text-blue-700">Our Story</a>
-      <a href="#schedule" class="hover:text-blue-700">Schedule</a>
-      <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover" />
-      <a href="#faq" class="hover:text-blue-700">FAQ</a>
-      <a href="#registry" class="hover:text-blue-700">Our Registry</a>
-      <a href="#rsvp" class="hover:text-blue-700">RSVP</a>
-    </nav>
+  <body class="bg-amber-50 min-h-screen overflow-hidden">
+    <!-- Password Protection Overlay -->
+    <div id="passwordOverlay" class="fixed inset-0 bg-blue-200 flex items-center justify-center z-[9999]" style="width: 100vw; height: 100vh;">
+      <div class="bg-amber-50 rounded-3xl p-16 max-w-md w-full mx-4 text-center">
+        <h1 class="wedding-script text-4xl mb-8 mt-8">Welcome to Our Wedding!</h1>
+        <p class="text-lg mb-6">Please enter the password to continue</p>
+        <input 
+          type="password" 
+          id="passwordInput" 
+          placeholder="Enter password" 
+          class="w-lg px-4 py-3 rounded-full border border-black text-center text-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-700"
+        />
+        <button 
+          onclick="checkPassword()" 
+          class="w-lg bg-blue-200 border border-black rounded-full px-12 py-3 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black"
+        >
+          Enter
+        </button>
+        <p id="errorMessage" class="text-red-600 mt-4" style="display: none;">Incorrect password. Please try again.</p>
+      </div>
+    </div>
+
+    <!-- Main Website Content (hidden until password is correct) -->
+    <div id="mainContent" style="display: none;">
+      <!-- Background Music -->
+      <audio id="backgroundMusic" loop>
+        <source src="assets/background.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
+      <nav class="flex justify-center items-center gap-12 py-3 text-2xl">
+        <a href="#story" class="hover:text-blue-700">Our Story</a>
+        <a href="#schedule" class="hover:text-blue-700">Schedule</a>
+        <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover" />
+        <a href="#faq" class="hover:text-blue-700">FAQ</a>
+        <!-- <a href="#registry" class="hover:text-blue-700">Our Registry</a> -->
+        <a href="#rsvp" class="hover:text-blue-700">RSVP</a>
+        <button id="navMusicToggle" class="hover:text-blue-700 text-2xl transition-colors" onclick="toggleMusic()">
+          <span id="navMusicIcon">🎵</span>
+        </button>
+      </nav>
+
+    <script>
+      // Password protection
+      const correctPassword = "CodiAndArmond2026"; // Change this to your desired password
+      
+      function checkPassword() {
+        const inputPassword = document.getElementById('passwordInput').value;
+        const errorMessage = document.getElementById('errorMessage');
+        const overlay = document.getElementById('passwordOverlay');
+        const mainContent = document.getElementById('mainContent');
+        
+        if (inputPassword === correctPassword) {
+          overlay.style.display = 'none';
+          mainContent.style.display = 'block';
+          document.body.classList.remove('overflow-hidden');
+          // Start music after successful login
+          tryPlayMusic();
+        } else {
+          errorMessage.style.display = 'block';
+          document.getElementById('passwordInput').value = '';
+        }
+      }
+      
+      // Allow Enter key to submit password
+      document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          checkPassword();
+        }
+      });
+
+      let isPlaying = false;
+      const audio = document.getElementById('backgroundMusic');
+      
+      function updateMusicIcon() {
+        const navMusicIcon = document.getElementById('navMusicIcon');
+        if (navMusicIcon) {
+          const icon = isPlaying ? '🔇' : '🎵';
+          navMusicIcon.textContent = icon;
+        }
+      }
+      
+      function toggleMusic() {
+        if (isPlaying) {
+          audio.pause();
+          isPlaying = false;
+        } else {
+          audio.play().catch(e => console.log('Audio play failed:', e));
+          isPlaying = true;
+        }
+        updateMusicIcon();
+      }
+      
+      function tryPlayMusic() {
+        audio.play().then(() => {
+          isPlaying = true;
+          updateMusicIcon();
+        }).catch(e => {
+          console.log('Autoplay prevented by browser');
+          updateMusicIcon();
+        });
+      }
+      
+      // Also try on first user interaction after password
+      document.addEventListener('click', function() {
+        if (!isPlaying && document.getElementById('passwordOverlay').style.display === 'none') {
+          audio.play().then(() => {
+            isPlaying = true;
+            updateMusicIcon();
+          }).catch(e => console.log('Audio play failed:', e));
+        }
+      }, { once: true });
+    </script>
+
     <main class="flex flex-col items-center mt-8">
       <div
         class="relative overflow-hidden rounded-3xl w-[95vw] max-w-6xl mb-12"
@@ -46,6 +159,7 @@
         </h1>
       </div>
       <section
+        id="story"
         class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto"
       >
         <div class="flex justify-center w-full mb-12 z-10">
@@ -90,38 +204,45 @@
         </div>
         <!-- Carousel End -->
 
-        <h2 class="wedding-script text-5xl text-center mb-12 mt-16">Wedding Schedule</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-14 gap-x-10 w-full max-w-5xl mx-auto px-12">
-          <div class="md:col-span-1 flex flex-col items-start">
-            <div class="flex items-center mb-6">
-              <h3 class="text-3xl">Welcome to the The Wedding Pavilion</h3>
-            </div>
+        <h2 id="schedule" class="wedding-script text-5xl text-center mb-12 mt-16">Wedding Schedule</h2>
+        <div class="w-full max-w-3xl mx-auto">
+          <div class="flex flex-col items-center text-center mb-8">
+            <h3 class="text-3xl mb-2">Welcome to the Wedding Pavilion</h3>
             <div class="text-lg mb-2">Arrive by 11:30 am</div>
             <div class="text-md">
-              Entry to the Wedding Pavilion begins at 11:45 am. Free parking is available on site. There will also be a shuttle buss from the Port Orleans Riverside. We recommend you come early and explore the resort before the wedding.
+              Entry to the Wedding Pavilion begins at 11:45 am. Free parking is available on site. We recommend you come early and explore the resort before the wedding.
             </div>
           </div>
-          <div></div>
-          <div></div>
-          <div class="md:col-span-1 flex flex-col items-start">
-            <div class="flex items-center mb-2">
-              <h3 class="text-3xl">last</h3>
-            </div>
-            <div class="text-lg mb-2">Arrive by 5:30 pm</div>
-            <div class="text-md mb-12">
-              Entry to Morris Arboretum begins at 5 pm. Free parking is available on site. There will also be two shuttle busses from the hotel. We’ll have the whole park to ourselves for the night, so feel free to explore the grounds while it’s still light out. Some of our favorite locations are the Rose Garden, Pennock Flower Walk, and the sculptures in Azalea Meadow.
+          <div class="flex flex-col items-center text-center mb-8">
+            <h3 class="text-3xl mb-2">Ceremony Starts</h3>
+            <div class="text-lg mb-2">12:00 pm</div>
+            <div class="text-md">
+              We are having our ceremony at the Wedding Pavilion, which is located at Disney's Grand Floridian Resort & Spa. The ceremony will be held indoors, so please dress accordingly.
             </div>
           </div>
+          <div class="flex flex-col items-center text-center mb-8">
+            <h3 class="text-3xl mb-2">Reception</h3>
+            <div class="text-lg mb-2">1:00 pm - 6:00 pm</div>
+            <div class="text-md">
+              Our reception is going to be a second walk away at the Summerhouse at the Grand Floridian. We will have a buffet lunch, drinks, and dancing. The Summerhouse is a beautiful venue with views of the Seven Seas Lagoon and Cinderella Castle. Someone very important to Disney might be paying us a visit.
+            </div>
+          </div>
+          <div class="flex flex-col items-center text-center mb-8">
+            <h3 class="text-3xl mb-2">After Hours</h3>
+            <div class="text-lg mb-2">6:00 pm - When we pass out</div>
+            <div class="text-md">
+              After the reception we will most likely head to the parks for some rides, more snacks, or just to relax. Whoever has bought tickets to the parks can join us for some fun!
+            </div>
           </div>
         </div>
         <img src="assets/divider.png" alt="divider" class="max-w-sm mb-12 mt-12">
         <h2 class="wedding-script text-5xl text-center mb-8 mt-16">Your Stay in Walt Disney World</h2>
         <div class="max-w-3xl px-4">
           <p class="text-center text-xl mb-6">
-            Make a week out of it! Since we our having our wedding at Disney we worked with the wonderful team to bring you discounts on tickets and select resorts. We want you to not only celebrate our marriage but also make it a vacation.
+            Make a week out of it! Since we are having our wedding at Disney we worked with the wonderful team to bring you discounts on tickets and select resorts. We want you to not only celebrate our marriage but also make it a vacation. (You obviously don't have to stay on property, it is easier to get around with Disney transportation.)
           </p>
         </div>
-        <div class="px-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto items-center mb-16 mt-8">
+        <div class="px-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto items-center mb-2 mt-8">
           <div class="w-full flex justify-center">
             <img src="assets/disney.jpg" alt="Walt Disney World" class="rounded-xl w-full max-w-lg object-cover" />
           </div>
@@ -135,12 +256,58 @@
             <p class="text-lg">
                 Grand Floridian Resort and Spa - $$$ <br> Port Orleans Riverside - $$ <br> Disney's All-Star Movies Resort - $
             </p>
-            <button class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black">
+            <a href="https://book.passkey.com/event/51068352/owner/70576/home" target="_blank" class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black">
                 Book a Room
-            </button>
+            </a>
+            <a href="https://disneyworld.disney.go.com/reservations/bolt_wdw_wed_00001/" target="_blank" class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black">
+                Buy Park Tickets
+            </a>
           </div>
         </div>
       </section>
+
+      <!-- FAQ Section -->
+      <section id="faq" class="w-full py-12">
+        <div class="max-w-4xl mx-auto px-12">
+          <h2 class="wedding-script text-5xl text-center mt-12 mb-12">Frequently Asked Questions</h2>
+          
+          <div class="space-y-8">
+            <div class="mb-6">
+              <h3 class="text-2xl font-semibold mb-2">What is the dress code?</h3>
+              <p class="text-lg">Our wedding is Formal attire: floral and pastel. suits, ties, and dresses in soft colors and floral patterns encouraged.</p>
+            </div>
+            
+            <div class="mb-6">
+              <h3 class="text-2xl font-semibold mb-2">Is there parking at the wedding venue?</h3>
+              <p class="text-lg">Yes! There is plenty of free parking available at the venue. Please refrain from driving if you plan to consume alcoholic beverages. There are plenty of Ubers available in the area.</p>
+            </div>
+            
+            <!-- <div class="mb-6">
+              <h3 class="text-2xl font-semibold mb-2">Will there be a shuttle service to the venue?</h3>
+              <p class="text-lg">We will have one shuttle bus from Port Orleans Riverside Resort to the Wedding Pavilion</p>
+            </div> -->
+          </div>
+        </div>
+      </section>
+
+      <section id="rsvp" class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto mt-16">
+        <div class="bg-amber-50 px-12 py-10 max-w-md w-full text-center rounded-3xl">
+          <h2 class="wedding-script text-5xl mb-8">RSVP</h2>
+          <p class="text-lg mb-6">Use this link to fill out the RSVP form.</p>
+          <a href="https://tally.so/r/mZbyeB" target="_blank" class="bg-blue-200 border border-black rounded-full px-10 py-3 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black inline-block">
+            RSVP Here
+          </a>
+        </div>
+      </section>
     </main>
+    
+    <footer class="w-full py-12 bg-amber-50">
+      <div class="text-center">
+        <h2 class="wedding-script text-4xl text-amber-200 font-bold leading-none tracking-tight">
+            Website and invitations by the Bride and Groom ♥
+        </h2>
+      </div>
+    </footer>
+    </div> <!-- Close mainContent div -->
   </body>
 </html>
