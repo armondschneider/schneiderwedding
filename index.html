@@ -29,6 +29,15 @@
         font-style: normal;
       }
       
+      @keyframes carousel {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      
+      .animate-carousel-large {
+        animation: carousel 20s linear infinite;
+      }
+      
       html {
         scroll-behavior: smooth;
       }
@@ -62,29 +71,39 @@
       </div>
     </div>
 
-    <!-- Main Website Content (hidden until password is correct) -->
     <div id="mainContent" style="display: none;">
-      <!-- Background Music -->
       <audio id="backgroundMusic" loop>
         <source src="assets/background.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
 
       <nav class="flex justify-center items-center gap-12 py-3 text-2xl">
-        <a href="#story" class="hover:text-blue-700">Our Story</a>
-        <a href="#schedule" class="hover:text-blue-700">Schedule</a>
-        <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover" />
-        <a href="#faq" class="hover:text-blue-700">FAQ</a>
-        <!-- <a href="#registry" class="hover:text-blue-700">Our Registry</a> -->
-        <a href="#rsvp" class="hover:text-blue-700">RSVP</a>
-        <button id="navMusicToggle" class="hover:text-blue-700 text-2xl transition-colors" onclick="toggleMusic()">
-          <span id="navMusicIcon">🎵</span>
+        <a href="#story" class="hover:text-blue-700 hidden md:block">Our Story</a>
+        <a href="#schedule" class="hover:text-blue-700 hidden md:block">Schedule</a>
+        
+        <!-- Mobile layout: centered image with music on right -->
+        <div class="flex items-center justify-between w-full md:hidden">
+          <div class="flex-1"></div>
+          <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover" />
+          <div class="flex-1 flex justify-end">
+            <button id="navMusicToggle" class="hover:text-blue-700 text-2xl transition-colors md:hidden" onclick="toggleMusic()">
+              <span id="navMusicIcon">🎵</span>
+            </button>
+          </div>
+        </div>
+        
+        <!-- Desktop layout: image in center, music on far right -->
+        <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover hidden md:block" />
+        
+        <a href="#faq" class="hover:text-blue-700 hidden md:block">FAQ</a>
+        <a href="#rsvp" class="hover:text-blue-700 hidden md:block">RSVP</a>
+        <button id="navMusicToggleDesktop" class="hover:text-blue-700 text-2xl transition-colors hidden md:block" onclick="toggleMusic()">
+          <span id="navMusicIconDesktop">🎵</span>
         </button>
       </nav>
 
     <script>
-      // Password protection
-      const correctPassword = "CodiAndArmond2026"; // Change this to your desired password
+      const correctPassword = "mainstreet";
       
       function checkPassword() {
         const inputPassword = document.getElementById('passwordInput').value;
@@ -116,9 +135,14 @@
       
       function updateMusicIcon() {
         const navMusicIcon = document.getElementById('navMusicIcon');
+        const navMusicIconDesktop = document.getElementById('navMusicIconDesktop');
+        const icon = isPlaying ? '🔇' : '🎵';
+        
         if (navMusicIcon) {
-          const icon = isPlaying ? '🔇' : '🎵';
           navMusicIcon.textContent = icon;
+        }
+        if (navMusicIconDesktop) {
+          navMusicIconDesktop.textContent = icon;
         }
       }
       
@@ -317,7 +341,7 @@
     
     <footer class="w-full py-12 bg-amber-50">
       <div class="text-center">
-        <h2 class="wedding-script text-4xl text-amber-200 font-bold leading-none tracking-tight">
+        <h2 class="wedding-script text-4xl text-blue-500 font-bold leading-none tracking-tight">
             Website and invitations by the Bride and Groom ♥
         </h2>
       </div>
