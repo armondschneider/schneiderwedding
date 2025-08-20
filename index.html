@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Codi & Armond's Wedding Day!</title>
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <meta name="description" content="Join us for Codi & Armond's wedding celebration at Disney's Grand Floridian Resort on March 11, 2026" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <meta
+      name="description"
+      content="Join us for Codi & Armond's wedding celebration at Disney's Grand Floridian Resort on March 11, 2026"
+    />
     <link rel="canonical" href="https://schneiders2026.com" />
     <meta property="og:url" content="https://schneiders2026.com" />
     <meta property="og:title" content="Codi & Armond's Wedding Day!" />
-    <meta property="og:description" content="Join us for our magical Disney wedding celebration" />
+    <meta
+      property="og:description"
+      content="Join us for our magical Disney wedding celebration"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@400;700&display=swap"
@@ -17,28 +23,33 @@
     />
     <style>
       @font-face {
-        font-family: 'NewSpirit';
-        src: url('./fonts/New Spirit Regular.ttf') format('truetype');
+        font-family: "NewSpirit";
+        src: url("./fonts/New Spirit Regular.ttf") format("truetype");
         font-weight: normal;
         font-style: normal;
       }
-      
+
       @font-face {
-        font-family: 'CandyDarling';
-        src: url('./fonts/CandyDarling-Regular-Trial.ttf') format('truetype');
+        font-family: "CandyDarling";
+        src: url("./fonts/CandyDarling-Regular-Trial.ttf") format("truetype");
         font-weight: normal;
         font-style: normal;
       }
-      
+
       @keyframes carousel {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
       }
-      
+
       .animate-carousel-large {
         animation: carousel 20s linear infinite;
+        will-change: transform;
       }
-      
+
       html {
         scroll-behavior: smooth;
       }
@@ -52,301 +63,483 @@
   </head>
   <body class="bg-amber-50 min-h-screen overflow-hidden">
     <!-- Password Protection Overlay -->
-    <div id="passwordOverlay" class="fixed inset-0 bg-blue-200 flex items-center justify-center z-[9999]" style="width: 100vw; height: 100vh;">
-      <div class="bg-amber-50 rounded-3xl p-16 max-w-md w-full mx-4 text-center">
-        <h1 class="wedding-script text-4xl mb-8 mt-8">Welcome to Our Wedding!</h1>
-        <p class="text-lg mb-6">Please enter the password to continue</p>
-        <input 
-          type="password" 
-          id="passwordInput" 
-          placeholder="Enter password" 
+    <div
+      id="passwordOverlay"
+      class="fixed inset-0 bg-blue-200 flex items-center justify-center z-[9999]"
+      style="width: 100vw; height: 100vh"
+    >
+      <div
+        class="bg-amber-50 rounded-3xl p-16 max-w-md w-full mx-4 text-center"
+      >
+        <h1 class="wedding-script text-4xl mb-8 mt-8">
+          Welcome to Our Wedding!
+        </h1>
+        <p class="text-lg mb-6">Please enter the password to continue. P.S. Its on your invitation ;)</p>
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Enter password"
           class="w-lg px-4 py-3 rounded-full border border-black text-center text-lg mb-4 focus:outline-none focus:ring-2 focus:ring-blue-700"
         />
-        <button 
-          onclick="checkPassword()" 
+        <button
+          onclick="checkPassword()"
           class="w-lg bg-blue-200 border border-black rounded-full px-12 py-3 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black"
         >
           Enter
         </button>
-        <p id="errorMessage" class="text-red-600 mt-4" style="display: none;">Incorrect password. Please try again.</p>
+        <p id="errorMessage" class="text-red-600 mt-4" style="display: none">
+          Incorrect password. Please try again.
+        </p>
       </div>
     </div>
 
-    <div id="mainContent" style="display: none;">
+    <div id="mainContent" style="display: none">
       <audio id="backgroundMusic" loop>
-        <source src="assets/background.mp3" type="audio/mpeg">
+        <source src="assets/background.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
 
       <nav class="flex justify-center items-center gap-12 py-3 text-2xl">
-        <a href="#story" class="hover:text-blue-700 hidden md:block">Our Story</a>
-        <a href="#schedule" class="hover:text-blue-700 hidden md:block">Schedule</a>
-        
+        <a href="#story" class="hover:text-blue-700 hidden md:block"
+          >Our Story</a
+        >
+        <a href="#schedule" class="hover:text-blue-700 hidden md:block"
+          >Schedule</a
+        >
+
         <!-- Mobile layout: centered image with music on right -->
         <div class="flex items-center justify-between w-full md:hidden">
           <div class="flex-1"></div>
           <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover" />
           <div class="flex-1 flex justify-end">
-            <button id="navMusicToggle" class="hover:text-blue-700 text-2xl transition-colors md:hidden" onclick="toggleMusic()">
+            <button
+              id="navMusicToggle"
+              class="hover:text-blue-700 text-2xl transition-colors md:hidden"
+              onclick="toggleMusic()"
+            >
               <span id="navMusicIcon">🎵</span>
             </button>
           </div>
         </div>
-        
+
         <!-- Desktop layout: image in center, music on far right -->
-        <img src="assets/us.png" alt="us" class="h-22 w-32 object-cover hidden md:block" />
-        
+        <img
+          src="assets/us.png"
+          alt="us"
+          class="h-22 w-32 object-cover hidden md:block"
+        />
+
         <a href="#faq" class="hover:text-blue-700 hidden md:block">FAQ</a>
         <a href="#rsvp" class="hover:text-blue-700 hidden md:block">RSVP</a>
-        <button id="navMusicToggleDesktop" class="hover:text-blue-700 text-2xl transition-colors hidden md:block" onclick="toggleMusic()">
+        <button
+          id="navMusicToggleDesktop"
+          class="hover:text-blue-700 text-2xl transition-colors hidden md:block"
+          onclick="toggleMusic()"
+        >
           <span id="navMusicIconDesktop">🎵</span>
         </button>
       </nav>
 
-    <script>
-      const correctPassword = "mainstreet";
-      
-      function checkPassword() {
-        const inputPassword = document.getElementById('passwordInput').value;
-        const errorMessage = document.getElementById('errorMessage');
-        const overlay = document.getElementById('passwordOverlay');
-        const mainContent = document.getElementById('mainContent');
-        
-        if (inputPassword === correctPassword) {
-          overlay.style.display = 'none';
-          mainContent.style.display = 'block';
-          document.body.classList.remove('overflow-hidden');
-          // Start music after successful login
-          tryPlayMusic();
-        } else {
-          errorMessage.style.display = 'block';
-          document.getElementById('passwordInput').value = '';
-        }
-      }
-      
-      // Allow Enter key to submit password
-      document.getElementById('passwordInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-          checkPassword();
-        }
-      });
+      <script>
+        const correctPassword = "mainstreet";
 
-      let isPlaying = false;
-      const audio = document.getElementById('backgroundMusic');
-      
-      function updateMusicIcon() {
-        const navMusicIcon = document.getElementById('navMusicIcon');
-        const navMusicIconDesktop = document.getElementById('navMusicIconDesktop');
-        const icon = isPlaying ? '🔇' : '🎵';
-        
-        if (navMusicIcon) {
-          navMusicIcon.textContent = icon;
+        function checkPassword() {
+          const inputPassword = document.getElementById("passwordInput").value;
+          const errorMessage = document.getElementById("errorMessage");
+          const overlay = document.getElementById("passwordOverlay");
+          const mainContent = document.getElementById("mainContent");
+
+          if (inputPassword === correctPassword) {
+            overlay.style.display = "none";
+            mainContent.style.display = "block";
+            document.body.classList.remove("overflow-hidden");
+            // Start music after successful login
+            tryPlayMusic();
+          } else {
+            errorMessage.style.display = "block";
+            document.getElementById("passwordInput").value = "";
+          }
         }
-        if (navMusicIconDesktop) {
-          navMusicIconDesktop.textContent = icon;
+
+        // Allow Enter key to submit password
+        document
+          .getElementById("passwordInput")
+          .addEventListener("keypress", function (e) {
+            if (e.key === "Enter") {
+              checkPassword();
+            }
+          });
+
+        let isPlaying = false;
+        const audio = document.getElementById("backgroundMusic");
+
+        function updateMusicIcon() {
+          const navMusicIcon = document.getElementById("navMusicIcon");
+          const navMusicIconDesktop = document.getElementById(
+            "navMusicIconDesktop"
+          );
+          const icon = isPlaying ? "🔇" : "🎵";
+
+          if (navMusicIcon) {
+            navMusicIcon.textContent = icon;
+          }
+          if (navMusicIconDesktop) {
+            navMusicIconDesktop.textContent = icon;
+          }
         }
-      }
-      
-      function toggleMusic() {
-        if (isPlaying) {
-          audio.pause();
-          isPlaying = false;
-        } else {
-          audio.play().catch(e => console.log('Audio play failed:', e));
-          isPlaying = true;
-        }
-        updateMusicIcon();
-      }
-      
-      function tryPlayMusic() {
-        audio.play().then(() => {
-          isPlaying = true;
-          updateMusicIcon();
-        }).catch(e => {
-          console.log('Autoplay prevented by browser');
-          updateMusicIcon();
-        });
-      }
-      
-      // Also try on first user interaction after password
-      document.addEventListener('click', function() {
-        if (!isPlaying && document.getElementById('passwordOverlay').style.display === 'none') {
-          audio.play().then(() => {
+
+        function toggleMusic() {
+          if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+          } else {
+            audio.play().catch((e) => console.log("Audio play failed:", e));
             isPlaying = true;
-            updateMusicIcon();
-          }).catch(e => console.log('Audio play failed:', e));
+          }
+          updateMusicIcon();
         }
-      }, { once: true });
-    </script>
 
-    <main class="flex flex-col items-center mt-8">
-      <div
-        class="relative overflow-hidden rounded-3xl w-[95vw] max-w-6xl mb-12"
-      >
-        <img
-          src="assets/cover.JPG"
-          alt="Codi and Armond"
-          class="w-full h-[700px] object-cover"
-        />
-        <div class="absolute inset-0 bg-black bg-opacity-25"></div>
-        <h1
-          class="wedding-script text-white text-8xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow-xl"
-          style="width: 100%; pointer-events: none"
+        function tryPlayMusic() {
+          audio
+            .play()
+            .then(() => {
+              isPlaying = true;
+              updateMusicIcon();
+            })
+            .catch((e) => {
+              console.log("Autoplay prevented by browser");
+              updateMusicIcon();
+            });
+        }
+
+        // Also try on first user interaction after password
+        document.addEventListener(
+          "click",
+          function () {
+            if (
+              !isPlaying &&
+              document.getElementById("passwordOverlay").style.display ===
+                "none"
+            ) {
+              audio
+                .play()
+                .then(() => {
+                  isPlaying = true;
+                  updateMusicIcon();
+                })
+                .catch((e) => console.log("Audio play failed:", e));
+            }
+          },
+          { once: true }
+        );
+      </script>
+
+      <main class="flex flex-col items-center mt-8">
+        <div
+          class="relative overflow-hidden rounded-3xl w-[95vw] max-w-6xl mb-12"
         >
-          Codi and Armond's <br />
-          Wedding Day!
-        </h1>
-      </div>
-      <section
-        id="story"
-        class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto"
-      >
-        <div class="flex justify-center w-full mb-12 z-10">
-          <div class="bg-amber-50 px-12 py-10 max-w-md w-full text-center text-xl mb-12" style="clip-path: polygon(8% 0, 92% 0, 100% 12%, 100% 88%, 92% 100%, 8% 100%, 0 88%, 0 12%);">
-            <div class="mb-4">Wednesday, March 11, 2026</div>
-            <div class="mb-4">The Wedding Pavilion<br>Disney's Grand Floridian Resort & Spa</div>
-            <div>Orlando, FL</div>
+          <img
+            src="assets/cover.JPG"
+            alt="Codi and Armond"
+            class="w-full h-[700px] object-cover"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-25"></div>
+          <h1
+            class="wedding-script text-white text-6xl md:text-8xl text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 drop-shadow-xl"
+            style="width: 100%; pointer-events: none"
+          >
+            Codi and Armond's <br />
+            Wedding Day!
+          </h1>
+        </div>
+        <section
+          id="story"
+          class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto"
+        >
+          <div class="flex justify-center w-full mb-12 z-10">
+            <div
+              class="bg-amber-50 px-12 py-10 max-w-md w-full text-center text-xl mb-12"
+              style="
+                clip-path: polygon(
+                  8% 0,
+                  92% 0,
+                  100% 12%,
+                  100% 88%,
+                  92% 100%,
+                  8% 100%,
+                  0 88%,
+                  0 12%
+                );
+              "
+            >
+              <div class="mb-4">Wednesday, March 11, 2026</div>
+              <div class="mb-4">
+                The Wedding Pavilion<br />Disney's Grand Floridian Resort & Spa
+              </div>
+              <div>Orlando, FL</div>
+            </div>
           </div>
-        </div>
-        <h2 class="wedding-script text-5xl text-center mb-8 mt-0">Our Story</h2>
-        <div class="max-w-3xl px-4">
-          <p class="text-center text-xl mb-6">
-            Codi and Armond met in August 2022 while she was a Disney College Program
-            cast member. Most of their early dates were spent at Disney World,
-            making it a big part of their love story. After Codi moved back to
-            Arizona for teaching, Armond followed a year later and found a job so they
-            could be together.
-          </p>
-          <p class="text-center text-xl">
-            On a trip to Sedona, Codi once joked on a red rock
-            they hiked, saying “this is somewhere you would propose.” A year
-            later, they returned and Armond proposed on that same rock. They chose Walt
-            Disney World for their wedding because it’s where they met, fell in
-            love, and created some of their happiest memories. It feels like the
-            perfect place to say “I do.”
-          </p>
-        </div>
-        <!-- Carousel Start -->
-        <div class="mt-16 mb-16 w-full overflow-hidden">
-          <div id="carousel-track" class="flex gap-16 animate-carousel-large items-center" style="height: 420px;">
-            <img src="assets/photo1.png" alt="photo1" class="h-96 object-contain" style="transform: rotate(-6deg);" />
-            <img src="assets/photo2.png" alt="photo2" class="h-96 object-contain" style="transform: rotate(4deg);" />
-            <img src="assets/photo3.png" alt="photo3" class="h-96 object-contain" style="transform: rotate(-3deg);" />
-            <img src="assets/photo4.png" alt="photo4" class="h-96 object-contain" style="transform: rotate(5deg);" />
-            <img src="assets/photo5.png" alt="photo5" class="h-96 object-contain" style="transform: rotate(-5deg);" />
-            <img src="assets/photo6.png" alt="photo6" class="h-96 object-contain" style="transform: rotate(3deg);" />
-            <img src="assets/photo7.png" alt="photo7" class="h-96 object-contain" style="transform: rotate(-2deg);" />
-            <!-- Duplicate for seamless loop -->
-            <img src="assets/photo1.png" alt="photo1-dup" class="h-96 object-contain" style="transform: rotate(-6deg);" />
-            <img src="assets/photo2.png" alt="photo2-dup" class="h-96 object-contain" style="transform: rotate(4deg);" />
+          <h2 class="wedding-script text-5xl text-center mb-8 mt-0">
+            Our Story
+          </h2>
+          <div class="max-w-3xl px-4">
+            <p class="text-center text-xl mb-6">
+              Codi and Armond met in August 2022 while she was a Disney College
+              Program cast member. Most of their early dates were spent at
+              Disney World, making it a big part of their love story. After Codi
+              moved back to Arizona for teaching, Armond followed a year later
+              and found a job so they could be together.
+            </p>
+            <p class="text-center text-xl">
+              On a trip to Sedona, Codi once joked on a red rock they hiked,
+              saying “this is somewhere you would propose.” A year later, they
+              returned and Armond proposed on that same rock. They chose Walt
+              Disney World for their wedding because it’s where they met, fell
+              in love, and created some of their happiest memories. It feels
+              like the perfect place to say “I do.”
+            </p>
           </div>
-        </div>
-        <!-- Carousel End -->
+          <!-- Carousel Start -->
+          <div class="mt-16 mb-16 w-full overflow-hidden">
+            <div
+              id="carousel-track"
+              class="flex gap-16 animate-carousel-large items-center"
+              style="height: 420px"
+            >
+              <img src="assets/photo1.png" alt="photo1" class="h-96 object-contain" style="transform: rotate(-6deg)" />
+              <img src="assets/photo2.png" alt="photo2" class="h-96 object-contain" style="transform: rotate(4deg)" />
+              <img src="assets/photo3.png" alt="photo3" class="h-96 object-contain" style="transform: rotate(-3deg)" />
+              <img src="assets/photo4.png" alt="photo4" class="h-96 object-contain" style="transform: rotate(5deg)" />
+              <img src="assets/photo5.png" alt="photo5" class="h-96 object-contain" style="transform: rotate(-5deg)" />
+              <img src="assets/photo6.png" alt="photo6" class="h-96 object-contain" style="transform: rotate(3deg)" />
+              <img src="assets/photo7.png" alt="photo7" class="h-96 object-contain" style="transform: rotate(-2deg)" />
+              <!-- Duplicate all for seamless loop -->
+              <img src="assets/photo1.png" alt="photo1-dup" class="h-96 object-contain" style="transform: rotate(-6deg)" />
+              <img src="assets/photo2.png" alt="photo2-dup" class="h-96 object-contain" style="transform: rotate(4deg)" />
+              <img src="assets/photo3.png" alt="photo3-dup" class="h-96 object-contain" style="transform: rotate(-3deg)" />
+              <img src="assets/photo4.png" alt="photo4-dup" class="h-96 object-contain" style="transform: rotate(5deg)" />
+              <img src="assets/photo5.png" alt="photo5-dup" class="h-96 object-contain" style="transform: rotate(-5deg)" />
+              <img src="assets/photo6.png" alt="photo6-dup" class="h-96 object-contain" style="transform: rotate(3deg)" />
+              <img src="assets/photo7.png" alt="photo7-dup" class="h-96 object-contain" style="transform: rotate(-2deg)" />
+            </div>
+          </div>
+          <!-- Carousel End -->
 
-        <h2 id="schedule" class="wedding-script text-5xl text-center mb-12 mt-16">Wedding Schedule</h2>
-        <div class="w-full max-w-3xl mx-auto">
-          <div class="flex flex-col items-center text-center mb-8">
-            <h3 class="text-3xl mb-2">Welcome to the Wedding Pavilion</h3>
-            <div class="text-lg mb-2">Arrive by 11:30 am</div>
-            <div class="text-md">
-              Entry to the Wedding Pavilion begins at 11:45 am. Free parking is available on site. We recommend you come early and explore the resort before the wedding.
+          <h2
+            id="schedule"
+            class="wedding-script text-5xl text-center mb-12 mt-16"
+          >
+            Wedding Schedule
+          </h2>
+          <div class="w-full max-w-3xl mx-auto">
+            <div class="flex flex-col items-center text-center mb-8">
+              <h3 class="text-3xl mb-2">Welcome to the Wedding Pavilion</h3>
+              <div class="text-lg mb-2">Arrive by 11:30 am</div>
+              <div class="text-md">
+                Entry to the Wedding Pavilion begins at 11:45 am. Free parking
+                is available on site. We recommend you come early and explore
+                the resort before the wedding.
+              </div>
+            </div>
+            <div class="flex flex-col items-center text-center mb-8">
+              <h3 class="text-3xl mb-2">Ceremony Starts</h3>
+              <div class="text-lg mb-2">12:00 pm</div>
+              <div class="text-md">
+                We are having our ceremony at the Wedding Pavilion, which is
+                located at Disney's Grand Floridian Resort & Spa. The ceremony
+                will be held indoors, so please dress accordingly.
+              </div>
+            </div>
+            <div class="flex flex-col items-center text-center mb-8">
+              <h3 class="text-3xl mb-2">Reception</h3>
+              <div class="text-lg mb-2">1:00 pm - 6:00 pm</div>
+              <div class="text-md">
+                Our reception is going to be a second walk away at the
+                Summerhouse at the Grand Floridian. We will have a buffet lunch,
+                drinks, and dancing. The Summerhouse is a beautiful venue with
+                views of the Seven Seas Lagoon and Cinderella Castle. Someone
+                very important to Disney might be paying us a visit.
+              </div>
+            </div>
+            <div class="flex flex-col items-center text-center mb-8">
+              <h3 class="text-3xl mb-2">After Hours</h3>
+              <div class="text-lg mb-2">6:00 pm - When we pass out</div>
+              <div class="text-md">
+                After the reception we will most likely head to the parks for
+                some rides, more snacks, or just to relax. Whoever has bought
+                tickets to the parks can join us for some fun!
+              </div>
             </div>
           </div>
-          <div class="flex flex-col items-center text-center mb-8">
-            <h3 class="text-3xl mb-2">Ceremony Starts</h3>
-            <div class="text-lg mb-2">12:00 pm</div>
-            <div class="text-md">
-              We are having our ceremony at the Wedding Pavilion, which is located at Disney's Grand Floridian Resort & Spa. The ceremony will be held indoors, so please dress accordingly.
-            </div>
-          </div>
-          <div class="flex flex-col items-center text-center mb-8">
-            <h3 class="text-3xl mb-2">Reception</h3>
-            <div class="text-lg mb-2">1:00 pm - 6:00 pm</div>
-            <div class="text-md">
-              Our reception is going to be a second walk away at the Summerhouse at the Grand Floridian. We will have a buffet lunch, drinks, and dancing. The Summerhouse is a beautiful venue with views of the Seven Seas Lagoon and Cinderella Castle. Someone very important to Disney might be paying us a visit.
-            </div>
-          </div>
-          <div class="flex flex-col items-center text-center mb-8">
-            <h3 class="text-3xl mb-2">After Hours</h3>
-            <div class="text-lg mb-2">6:00 pm - When we pass out</div>
-            <div class="text-md">
-              After the reception we will most likely head to the parks for some rides, more snacks, or just to relax. Whoever has bought tickets to the parks can join us for some fun!
-            </div>
-          </div>
-        </div>
-        <img src="assets/divider.png" alt="divider" class="max-w-sm mb-12 mt-12">
-        <h2 class="wedding-script text-5xl text-center mb-8 mt-16">Your Stay in Walt Disney World</h2>
-        <div class="max-w-3xl px-4">
-          <p class="text-center text-xl mb-6">
-            Make a week out of it! Since we are having our wedding at Disney we worked with the wonderful team to bring you discounts on tickets and select resorts. We want you to not only celebrate our marriage but also make it a vacation. (You obviously don't have to stay on property, it is easier to get around with Disney transportation.)
-          </p>
-        </div>
-        <div class="px-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto items-center mb-2 mt-8">
-          <div class="w-full flex justify-center">
-            <img src="assets/disney.jpg" alt="Walt Disney World" class="rounded-xl w-full max-w-lg object-cover" />
-          </div>
-          <div class="w-full flex flex-col items-start md:items-start">
-            <p class="text-3xl mb-6">
-                Resorts
+          <img
+            src="assets/divider.png"
+            alt="divider"
+            class="max-w-sm mb-12 mt-12"
+          />
+          <h2 class="wedding-script text-5xl text-center mb-8 mt-16">
+            Your Stay in Walt Disney World
+          </h2>
+          <div class="max-w-3xl px-4">
+            <p class="text-center text-xl mb-6">
+              Make a week out of it! Since we are having our wedding at Disney
+              we worked with the wonderful team to bring you discounts on
+              tickets and select resorts. We want you to not only celebrate our
+              marriage but also make it a vacation. (You obviously don't have to
+              stay on property, it is easier to get around with Disney
+              transportation.)
             </p>
-            <p class="text-lg mb-6">
-                We have exclusive rates at Disney resorts and special group ticket pricing. Explore the parks, relax at the resort, and make magical memories with family and friends.
-            </p>
-            <p class="text-lg">
-                Grand Floridian Resort and Spa - $$$ <br> Port Orleans Riverside - $$ <br> Disney's All-Star Movies Resort - $
-            </p>
-            <a href="https://book.passkey.com/event/51068352/owner/70576/home" target="_blank" class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black">
-                Book a Room
+          </div>
+          <div
+            class="px-12 grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto items-center mb-2 mt-8"
+          >
+            <div class="w-full flex justify-center">
+              <img
+                src="assets/disney.jpg"
+                alt="Walt Disney World"
+                class="rounded-xl w-full max-w-lg object-cover"
+              />
+            </div>
+            <div class="w-full flex flex-col items-start md:items-start">
+              <p class="text-3xl mb-6">Resorts</p>
+              <p class="text-lg mb-6">
+                We have exclusive rates at Disney resorts and special group
+                ticket pricing. Explore the parks, relax at the resort, and make
+                magical memories with family and friends.
+              </p>
+              <p class="text-lg">
+                Grand Floridian Resort and Spa - $$$ <br />
+                Port Orleans Riverside - $$ <br />
+                Disney's All-Star Movies Resort - $
+              </p>
+              <a
+                href="https://book.passkey.com/event/51068352/owner/70576/home"
+                target="_blank"
+                class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black"
+              >
+                Book a discounted room
+              </a>
+              <a
+                href="https://disneyworld.disney.go.com/reservations/bolt_wdw_wed_00001/"
+                target="_blank"
+                class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black"
+              >
+                Buy discounted park tickets
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="w-full py-12">
+          <div class="max-w-4xl mx-auto px-12">
+            <h2 class="wedding-script text-5xl text-center mt-12 mb-12">
+              Frequently Asked Questions
+            </h2>
+
+            <div class="space-y-8">
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  What is the dress code?
+                </h3>
+                <p class="text-lg">
+                  Our wedding is formal attire: floral and pastel, think springtime. suits, ties,
+                  and dresses in soft colors and floral patterns encouraged.
+                </p>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  Is there parking at the wedding venue?
+                </h3>
+                <p class="text-lg">
+                  Yes! There is plenty of free parking available at the venue.
+                  Please refrain from driving if you plan to consume alcoholic
+                  beverages. There are plenty of Ubers (Minnies) available in the area.
+                  (We are also working on possible shuttle transportation from one of
+                  the hotels to the wedding venue. Stay tuned.)
+                </p>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  How can I get to the wedding venue?
+                </h3>
+                <p class="text-lg">
+                  If you are staying on Disney property, there are complimentary
+                  buses that run to the Grand Floridian. If you are staying off any
+                  property, we recommend using a rideshare service like Uber or
+                  Lyft.
+                </p>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  Discounted rooms and park tickets?
+                </h3>
+                <p class="text-lg">
+                  We know Disney can be expensive, but we'd love to see you all on property if possible! It makes it so much easier to hang out together and enjoy the parks. We really hope you can turn this into a vacation and make the most of your time at Disney. We've secured discounted rates on both resort rooms and park tickets to help make it more affordable. All the details and booking information are in the links above. If you have any questions, there's a phone number and email available through the booking links.
+                </p>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  Is the wedding indoors or outdoors?
+                </h3>
+                <p class="text-lg">
+                  Weather permitting, the ceremony will be held indoors and reception outside. (We do have an indoor reception as a backup)
+                </p>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  What's the deal with the After Party?
+                </h3>
+                <p class="text-lg">
+                  After the reception we will most likely head to the parks for some late-night fun! Either Epcot or Magic Kingdom. Please make sure to purchase a park ticket if you would like to join us. We will let you all know the plans a couple months before the wedding.
+                </p>
+              </div>
+
+              <div class="mb-6">
+                <h3 class="text-2xl font-semibold mb-2">
+                  Need more help?
+                </h3>
+                <p class="text-lg">
+                  If you have any questions or need assistance, please don't hesitate to reach out. We know planning all this can be difficult and overwhelming, text me, call me (267) 880-9163 (Armond) with any further questions or you can reach out to Disney (407) 827-6799 directly regarding booking and information. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          id="rsvp"
+          class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto mt-16"
+        >
+          <div
+            class="bg-amber-50 px-12 py-10 max-w-md w-full text-center rounded-3xl"
+          >
+            <h2 class="wedding-script text-5xl mb-8">RSVP</h2>
+            <p class="text-lg mb-6">Use this link to fill out the RSVP form. Please RSVP before 1/10/2026.</p>
+            <a
+              href="https://tally.so/r/mZbyeB"
+              target="_blank"
+              class="bg-blue-200 border border-black rounded-full px-10 py-3 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black inline-block"
+            >
+              RSVP Here
             </a>
-            <a href="https://disneyworld.disney.go.com/reservations/bolt_wdw_wed_00001/" target="_blank" class="bg-amber-50 border border-black rounded-full px-10 py-3 mt-8 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black">
-                Buy Park Tickets
-            </a>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
 
-      <!-- FAQ Section -->
-      <section id="faq" class="w-full py-12">
-        <div class="max-w-4xl mx-auto px-12">
-          <h2 class="wedding-script text-5xl text-center mt-12 mb-12">Frequently Asked Questions</h2>
-          
-          <div class="space-y-8">
-            <div class="mb-6">
-              <h3 class="text-2xl font-semibold mb-2">What is the dress code?</h3>
-              <p class="text-lg">Our wedding is Formal attire: floral and pastel. suits, ties, and dresses in soft colors and floral patterns encouraged.</p>
-            </div>
-            
-            <div class="mb-6">
-              <h3 class="text-2xl font-semibold mb-2">Is there parking at the wedding venue?</h3>
-              <p class="text-lg">Yes! There is plenty of free parking available at the venue. Please refrain from driving if you plan to consume alcoholic beverages. There are plenty of Ubers available in the area.</p>
-            </div>
-            
-            <!-- <div class="mb-6">
-              <h3 class="text-2xl font-semibold mb-2">Will there be a shuttle service to the venue?</h3>
-              <p class="text-lg">We will have one shuttle bus from Port Orleans Riverside Resort to the Wedding Pavilion</p>
-            </div> -->
-          </div>
+      <footer class="w-full py-12 bg-amber-50">
+        <div class="text-center">
+          <h2
+            class="text-xl text-blue-700 leading-none"
+          >
+            We hope to see you real soon ♥
+          </h2>
         </div>
-      </section>
-
-      <section id="rsvp" class="w-[95vw] max-w-6xl rounded-3xl bg-blue-200 py-16 flex flex-col items-center mx-auto mt-16">
-        <div class="bg-amber-50 px-12 py-10 max-w-md w-full text-center rounded-3xl">
-          <h2 class="wedding-script text-5xl mb-8">RSVP</h2>
-          <p class="text-lg mb-6">Use this link to fill out the RSVP form.</p>
-          <a href="https://tally.so/r/mZbyeB" target="_blank" class="bg-blue-200 border border-black rounded-full px-10 py-3 text-xl transition hover:bg-blue-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-black inline-block">
-            RSVP Here
-          </a>
-        </div>
-      </section>
-    </main>
-    
-    <footer class="w-full py-12 bg-amber-50">
-      <div class="text-center">
-        <h2 class="wedding-script text-4xl text-blue-500 font-bold leading-none tracking-tight">
-            Website and invitations by the Bride and Groom ♥
-        </h2>
-      </div>
-    </footer>
-    </div> <!-- Close mainContent div -->
+      </footer>
+    </div>
   </body>
 </html>
